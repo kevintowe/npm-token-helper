@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "projects": {
+    "npm-token-helper": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/npm-token-helper",
+      "sourceRoot": "apps/npm-token-helper/src",
+      "prefix": "npm-token-helper",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/npm-token-helper",
+            "index": "apps/npm-token-helper/src/index.html",
+            "main": "apps/npm-token-helper/src/main.ts",
+            "polyfills": "apps/npm-token-helper/src/polyfills.ts",
+            "tsConfig": "apps/npm-token-helper/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/npm-token-helper/src/favicon.ico",
+              "apps/npm-token-helper/src/assets"
+            ],
+            "styles": ["apps/npm-token-helper/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/npm-token-helper/src/environments/environment.ts",
+                  "with": "apps/npm-token-helper/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "npm-token-helper:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "npm-token-helper:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "npm-token-helper:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/npm-token-helper/tsconfig.app.json",
+              "apps/npm-token-helper/tsconfig.spec.json",
+              "apps/npm-token-helper/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/npm-token-helper/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/npm-token-helper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "npm-token-helper-e2e": {
+      "root": "apps/npm-token-helper-e2e",
+      "sourceRoot": "apps/npm-token-helper-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/npm-token-helper-e2e/cypress.json",
+            "tsConfig": "apps/npm-token-helper-e2e/tsconfig.e2e.json",
+            "devServerTarget": "npm-token-helper:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "npm-token-helper:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/npm-token-helper-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/npm-token-helper-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "npm-token-helper"
+}
