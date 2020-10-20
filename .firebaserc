@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "npm-token-helper": {
+      "hosting": {
+        "npm-token-helper": [
+          "npm-token-helper"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "npm-token-helper"
+  }
+}

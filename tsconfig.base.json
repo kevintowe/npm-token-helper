@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@npm-token-helper/pages": ["libs/pages/src/index.ts"],
+      "@npm-token-helper/components": ["libs/components/src/index.ts"],
+      "@npm-token-helper/services": ["libs/services/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -29,6 +29,15 @@
     "npm-token-helper-e2e": {
       "tags": [],
       "implicitDependencies": ["npm-token-helper"]
+    },
+    "pages": {
+      "tags": []
+    },
+    "components": {
+      "tags": []
+    },
+    "services": {
+      "tags": []
     }
   }
 }
