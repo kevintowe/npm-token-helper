@@ -2,7 +2,7 @@ name: Npm Token Helper CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 12
       - run: npm install
-      - run: npm test npm-token-helper
+      # - run: npm test npm-token-helper
       - run: npm build npm-token-helper --prod
       - uses: actions/upload-artifact@master
         with:
@@ -37,4 +37,3 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        
