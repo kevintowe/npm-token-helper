@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v2.1.2
         with:
           node-version: 12
-      - run: npm install
+      - run: npm ci
       # - run: npm test npm-token-helper
-      - run: npm build npm-token-helper --prod
+      - run: npm run build npm-token-helper --prod
       - uses: actions/upload-artifact@master
         with:
           name: dist
